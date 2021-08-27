@@ -2,9 +2,9 @@
 test_logging.py
 Unit tests for logging
 """
-import logging as log
+from logger import init
 
 
 class TestLogging:
     def test_init(self):
-        assert log.init()
+        assert init()
