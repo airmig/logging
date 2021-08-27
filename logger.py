@@ -3,6 +3,8 @@ logging.py
 Reference of logging in python
 """
 import logging
+import logging.config
+import yaml
 
 
 def init():
@@ -72,4 +74,24 @@ def simplelogging():
     logger.error('This is an error')
 
 
+"""
+Using a file configuration for logging facility
+"""
+
+
+def fileConfigLogger():
+    logging.config.fileConfig(fname='file.conf', disable_existing_loggers=False) # noqa
+    logger = logging.getLogger(__name__)
+    logger.debug('this is a debug message using file config logger')
+
+
+def dictionaryLogger():
+    with open('config.yaml', 'r') as f:
+        config = yaml.safe_load(f.read()) # noqa
+    logger = logging.getLogger(__name__)
+    logger.debug('This is a yaml log message')
+
+
 simplelogging()
+fileConfigLogger()
+dictionaryLogger()
