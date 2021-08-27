@@ -88,6 +88,8 @@ def fileConfigLogger():
 def dictionaryLogger():
     with open('config.yaml', 'r') as f:
         config = yaml.safe_load(f.read()) # noqa
+        logging.config.dictConfig(config)
+    print(logging.config)
     logger = logging.getLogger(__name__)
     logger.debug('This is a yaml log message')
 
